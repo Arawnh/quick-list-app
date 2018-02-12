@@ -11,9 +11,6 @@
       "arrow-parens": false,
       "max-classes-per-file": [false],
       "interface-name": [false],
-      "no-console": {
-        "severity": "warn"
-      },
       "no-empty": false,
       "max-line-length": {
         "options": [130],

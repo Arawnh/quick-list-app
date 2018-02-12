@@ -1,12 +1,12 @@
 import * as React from "react"
-import { Button, Jumbotron, Navbar } from "react-bootstrap"
-import { List, ListRowProps } from "react-virtualized/dist/commonjs/List"
-import ProductList from "./components/productList"
-import "./styles/App.css"
+import { Button, Jumbotron, ListGroup, ListGroupItem } from "react-bootstrap"
+import ProductList from "./components/ProductList"
+import jsonStore from "./stores/jsonStore"
 
+import "./styles/App.css"
 const logo = require("./styles/logo.svg")
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   render() {
     return (
@@ -15,15 +15,16 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to product list app</h1>
         </header>
-        <p className="App-intro">
-          {<ProductList
-            id={123}
-            description={"sample product"}
-          />}
-        </p>
+        <ListGroup>{
+          jsonStore().map((product) =>
+            <ListGroupItem key={product.name}>
+              <ProductList
+                name={product.name}
+                description={product.description}
+              />
+            </ListGroupItem>)}
+        </ListGroup>
       </div>
     )
   }
 }
-
-export default App

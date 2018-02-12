@@ -1,21 +1,37 @@
 import * as React from "react"
+import { Button, Collapse, ControlLabel, Form, FormControl, FormGroup } from "react-bootstrap"
+import ProductDetails from "./ProductDetails"
 
 interface ProductItem {
-    id: number
+    name: string
+    number?: string
     description: string
+    images?: string
 }
+type MyState = { open: boolean };
 
-class ProductList extends React.Component<ProductItem> {
+export default class ProductList extends React.Component<ProductItem, MyState> {
+    constructor(props: ProductItem) {
+        super(props)
+        this.state = { open: false }
+        this.clickCollapse = this.clickCollapse.bind(this)
+    }
+
+    clickCollapse() {
+        this.setState({ open: !this.state.open })
+
+    }
+
     render() {
-        const { id, description } = this.props
+        const { name, description } = this.props
         return (
             <div>
-                <li>
-                    {description} with an ID of: {id}
-                </li>
+                <p>{description} with an ID of: {name} </p>
+                <Button bsStyle="primary" onClick={this.clickCollapse}>
+                    See details
+                 </Button>
+                {<ProductDetails name={name} description={description} open={this.state.open} />}
             </div>
         )
     }
 }
-
-export default ProductList
