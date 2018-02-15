@@ -44,8 +44,6 @@ const data: any = [{
         },
     ],
 }]
-function importPortsJson(): any[] {
+export default function importPortsJson(): any[] {
     return data
 }
-
-export default importPortsJson

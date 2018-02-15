@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Collapse, ControlLabel, Form, FormControl, FormGroup } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import ProductDetails from "./ProductDetails"
 
 interface ProductItem {
@@ -19,7 +19,6 @@ export default class ProductList extends React.Component<ProductItem, MyState> {
 
     clickCollapse() {
         this.setState({ open: !this.state.open })
-
     }
 
     render() {
