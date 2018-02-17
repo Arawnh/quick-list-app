@@ -9,6 +9,7 @@
     "@types/react-bootstrap": "^0.32.1",
     "@types/react-dom": "^16.0.3",
     "@types/react-virtualized": "^9.7.10",
+    "@types/flux": "^3.1.7",
     "bootstrap": "3.3.7",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
@@ -24,5 +25,6 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

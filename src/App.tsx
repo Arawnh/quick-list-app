@@ -1,12 +1,17 @@
 import * as React from "react"
 import { Button, Jumbotron, ListGroup, ListGroupItem } from "react-bootstrap"
 import ProductList from "./components/ProductList"
-import jsonStore from "./stores/jsonStore"
+import ProductStore from "./stores/ProductStore"
 
 import "./styles/App.css"
 const logo = require("./styles/logo.svg")
 
 export default class App extends React.Component {
+  componentWillMount() {
+    ProductStore.on("change", () => {
+      this.forceUpdate()
+    })
+  }
 
   render() {
     return (
@@ -16,11 +21,14 @@ export default class App extends React.Component {
           <h1 className="App-title">Welcome to product list app</h1>
         </header>
         <ListGroup>{
-          jsonStore().map((product) =>
-            <ListGroupItem key={product.name}>
+          ProductStore.getAll().map((product) =>
+            <ListGroupItem key={product.id}>
               <ProductList
+                id={product.id}
                 name={product.name}
+                productNumber={product.productNumber}
                 description={product.description}
+                images={product.images}
               />
             </ListGroupItem>)}
         </ListGroup>
